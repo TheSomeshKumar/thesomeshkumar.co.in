@@ -12,7 +12,7 @@ export default function Hero() {
 
   return (
     <section className={styles.heroSection}>
-      <motion.div 
+      <motion.div
         className={`${styles.content} container`}
         style={{ y, opacity }}
       >
@@ -23,29 +23,29 @@ export default function Hero() {
           className={styles.badge}
         >
           <Code2 size={16} className={styles.badgeIcon} />
-          <span>Technical Lead • Mobile & KMP</span>
+          <span>Technical Lead • Staff Engineer</span>
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           className={styles.title}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           Hi, I&apos;m <span className="text-gradient">Somesh Kumar</span><br />
-          Architecting robust mobile experiences.
+          Architecting the future of mobile.
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           className={styles.subtitle}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I specialize in building world-class distributed applications natively on <span className="text-gradient-android" style={{fontWeight: 600}}>Android</span>, <span className="text-gradient-ios" style={{fontWeight: 600}}>iOS</span>, and unified through <span className="text-gradient" style={{fontWeight: 600}}>Kotlin Multiplatform</span>.
+          I’m a mobile Tech Lead from Jaipur. I bring together deep expertise in native <span className="text-gradient-android" style={{ fontWeight: 600 }}>Android</span>, native <span className="text-gradient-ios" style={{ fontWeight: 600 }}>iOS</span>, and <span className="text-gradient" style={{ fontWeight: 600 }}>Kotlin Multiplatform</span> to build apps that perform flawlessly. But great architecture is nothing without a great interface. I have a deep love for UI/UX, obsessing over the details to create experiences that feel truly mobile-native, with that signature Material Design touch.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           className={styles.ctaGroup}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className={styles.scrollIndicator}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}

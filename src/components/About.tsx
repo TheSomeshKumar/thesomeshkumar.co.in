@@ -28,26 +28,24 @@ export default function About() {
         >
           <h2 className={styles.heading}>Behind the Code</h2>
           <p className={styles.paragraph}>
-            As a Technical Lead & Staff Engineer, my journey started from laying bricks with Java in Android to bridging ecosystems natively across iOS and Android with KMP.
+            I started my career as an Android developer writing Java. Today, as a Tech Lead, I build apps for both Android and iOS using Kotlin Multiplatform.
           </p>
           <p className={styles.paragraph}>
-            Over the years, I've had the privilege of architecting products from the ground up, rewriting monolithic codebases, and migrating robust systems to sophisticated Modern MVVM, Jetpack Compose, and Clean Architecture standards.
+            Over the years, I've built products from scratch, rewritten older legacy code into modern MVVM and Jetpack Compose architectures, and mentored junior developers. I have a Master's in Computer Applications from Jaipur National University, and I really enjoy contributing to open-source projects when I can.
+          </p>
+
+          <h2 className={styles.heading}>Beyond the Screen</h2>
+          <p className={styles.paragraph}>
+            I'm based in Jaipur. I'm naturally a bit of an introvert, so while my day job involves a lot of leading and collaborating, I do my best work when I can just put on my headphones, put on some Eminem or hip-hop, and get completely into the zone.
           </p>
           <p className={styles.paragraph}>
-            I hold a Master's degree in Computer Applications from Jaipur National University, and a deep passion for open-source development and sharing knowledge within the mobile engineering community.
+            When I'm not coding, I'm usually spending time with my kids, messing around with photography and photo editing, or reading up on astrology. I also really like traveling and the idea of hiking—taking my bike up to Rishikesh recently was a great way to unplug. I also love playing video games, though it's hard to find much free time for that these days!
           </p>
+
           <div className={styles.skills}>
             {["Kotlin", "Java", "Jetpack Compose", "SwiftUI", "Kotlin Multiplatform"].map(skill => (
               <span key={skill} className="tag">{skill}</span>
             ))}
-          </div>
-
-          <div className={styles.educationBlock}>
-            <h3 style={{ marginTop: '2rem', marginBottom: '0.5rem', fontWeight: 600 }}>Education</h3>
-            <ul style={{ listStyleType: 'none', padding: 0, color: 'var(--text-secondary)' }}>
-              <li style={{ marginBottom: '0.5rem' }}>• <b>Master of Computer Application</b> - Jaipur National University (2013-2015)</li>
-              <li>• <b>Bachelor of Computer Application</b> - Arya College of Engineering & IT (2010-2013)</li>
-            </ul>
           </div>
 
           <motion.div
@@ -66,35 +64,38 @@ export default function About() {
         <div className={styles.imagesGrid}>
           {/* Photo 1: Work / Desk (Left) */}
           <motion.div style={{ y: y1 }} className={`${styles.imgWrapper} ${styles.imgPos1}`}>
-            <Image 
-              src="/somesh_2019.png" 
-              alt="Somesh Desk Setup 2019" 
-              fill 
-              style={{ objectFit: 'cover' }} 
+            <Image
+              src="/somesh_2019.png"
+              alt="Somesh Desk Setup 2013"
+              fill
+              style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
+            <div className={styles.imgCaption}>2019: The 3-laptop grind & debug naps</div>
           </motion.div>
-          
+
           {/* Photo 2: Face / Portrait (Top Right) */}
           <motion.div style={{ y: y2 }} className={`${styles.imgWrapper} ${styles.imgPos2}`}>
-            <Image 
-              src="/somesh_photo.jpg" 
-              alt="Somesh Portrait" 
-              fill 
-              style={{ objectFit: 'cover' }} 
+            <Image
+              src="/somesh_photo.jpg"
+              alt="Somesh Portrait"
+              fill
+              style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
+            <div className={styles.imgCaption}>Somesh Kumar</div>
           </motion.div>
 
           {/* Photo 3: Travel / Personal (Bottom Right) */}
           <motion.div style={{ y: y3 }} className={`${styles.imgWrapper} ${styles.imgPos3}`}>
-            <Image 
-              src="/somesh_travel.jpg" 
-              alt="Somesh Travel" 
-              fill 
-              style={{ objectFit: 'cover' }} 
+            <Image
+              src="/somesh_travel.jpg"
+              alt="Somesh Travel"
+              fill
+              style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
+            <div className={styles.imgCaption}>Travels & Unplugging</div>
           </motion.div>
         </div>
       </div>

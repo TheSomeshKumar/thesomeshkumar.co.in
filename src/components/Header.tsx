@@ -13,7 +13,7 @@ export default function Header() {
   ];
 
   return (
-    <motion.header 
+    <motion.header
       className={styles.header}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -21,11 +21,11 @@ export default function Header() {
     >
       <div className={`${styles.navContainer} container`}>
         <a href="#" className={styles.logo}>
-          SK<span className="text-gradient">.</span>
+          Somesh Kumar<span className="text-gradient">.</span>
         </a>
         <nav className={styles.nav}>
           {navLinks.map((link, idx) => (
-            <motion.a 
+            <motion.a
               key={link.name}
               href={link.href}
               className={styles.navLink}
