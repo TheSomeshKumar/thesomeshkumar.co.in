@@ -47,22 +47,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: var(--color-kmp);
   position: relative;
   z-index: 2;
-  transition: border-color var(--transition-smooth);
+  transition: all 0.4s ease;
 }
 
 .timelineItem:hover .marker {
-  border-color: var(--accent);
-  box-shadow: 0 0 15px var(--accent-glow);
+  border-color: var(--color-kmp);
+  background: rgba(127, 82, 255, 0.1);
+  box-shadow: 0 0 20px rgba(127, 82, 255, 0.4);
+  transform: scale(1.1);
 }
 
 .line {
   flex: 1;
   width: 2px;
-  background: var(--border-color);
+  background: linear-gradient(180deg, var(--color-kmp) 0%, transparent 100%);
   margin-top: var(--space-sm);
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.timelineItem:hover .line {
+  opacity: 1;
+  background: linear-gradient(180deg, var(--color-kmp) 0%, var(--color-android) 100%);
 }
 
 .content {

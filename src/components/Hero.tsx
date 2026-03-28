@@ -42,7 +42,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I specialize in building world-class distributed applications across Android, iOS, and Kotlin Multiplatform.
+          I specialize in building world-class distributed applications natively on <span className="text-gradient-android" style={{fontWeight: 600}}>Android</span>, <span className="text-gradient-ios" style={{fontWeight: 600}}>iOS</span>, and unified through <span className="text-gradient" style={{fontWeight: 600}}>Kotlin Multiplatform</span>.
         </motion.p>
 
         <motion.div 

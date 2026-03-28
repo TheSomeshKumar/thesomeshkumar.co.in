@@ -44,48 +44,92 @@
 
 .imagesGrid {
   position: relative;
-  display: flex;
-  gap: var(--space-md);
   height: 600px;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 }
 
-.imgWrapper1, .imgWrapper2 {
-  width: 240px;
-  height: 380px;
+.imgWrapper {
+  position: absolute;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border: 4px solid var(--border-color);
   background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.imgWrapper1 {
-  align-self: flex-start;
-  margin-top: 50px;
+.imgWrapper:hover {
+  transform: scale(1.05) !important;
+  border-color: var(--color-kmp);
+  z-index: 10;
 }
 
-.imgWrapper2 {
-  align-self: flex-end;
-  margin-bottom: 50px;
+/* Image 1: Main left side */
+.imgPos1 {
+  width: 250px;
+  height: 320px;
+  left: 0;
+  top: 80px;
+  z-index: 2;
 }
 
-.placeholderImg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  opacity: 0.5;
+/* Image 2: Top Right slightly smaller */
+.imgPos2 {
+  width: 180px;
+  height: 180px;
+  right: 10px;
+  top: 10px;
+  border-radius: var(--radius-full); /* Make it a circle! */
+  z-index: 3;
+}
+
+/* Image 3: Bottom Right overlapping */
+.imgPos3 {
+  width: 240px;
+  height: 260px;
+  right: 50px;
+  bottom: 20px;
+  z-index: 1;
 }
 
 .placeholderImg span {
   font-size: 1.5rem;
   margin-bottom: var(--space-sm);
+}
+
+.easterEgg {
+  margin-top: var(--space-2xl);
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(90deg, rgba(127, 82, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  border-left: 2px solid var(--color-kmp);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  position: relative;
+  max-width: 90%;
+}
+
+.quoteIcon {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 3rem;
+  color: var(--color-kmp);
+  opacity: 0.2;
+  font-family: serif;
+  line-height: 1;
+}
+
+.songQuote {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+}
+
+.artist {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }

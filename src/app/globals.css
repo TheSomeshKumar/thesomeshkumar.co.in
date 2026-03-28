@@ -13,6 +13,13 @@
   --accent: #ffffff;
   --accent-glow: rgba(255, 255, 255, 0.1);
 
+  /* Mobile Tech Theme Colors */
+  --color-android: #3DDC84;
+  --color-ios: #007AFF;
+  --color-ios-gradient: linear-gradient(135deg, #FF2D55 0%, #007AFF 100%);
+  --color-kmp: #7f52ff;
+  --color-kmp-gradient: linear-gradient(135deg, #7f52ff 0%, #ff8965 100%);
+
   --font-primary: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
@@ -90,7 +97,23 @@ img {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  background: var(--color-kmp-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-android {
+  background: linear-gradient(to right, var(--color-android), #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-ios {
+  background: var(--color-ios-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
