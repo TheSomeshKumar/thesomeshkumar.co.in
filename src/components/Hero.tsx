@@ -42,7 +42,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I’m a mobile Tech Lead from Jaipur. I bring together deep expertise in native <span className="text-gradient-android" style={{ fontWeight: 600 }}>Android</span>, native <span className="text-gradient-ios" style={{ fontWeight: 600 }}>iOS</span>, and <span className="text-gradient" style={{ fontWeight: 600 }}>Kotlin Multiplatform</span> to build apps that perform flawlessly. But great architecture is nothing without a great interface. I have a deep love for UI/UX, obsessing over the details to create experiences that feel truly mobile-native, with that signature Material Design touch.
+          I’m a mobile Tech Lead from India. I bring together deep expertise in native <span className="text-gradient-android" style={{ fontWeight: 600 }}>Android</span>, native <span className="text-gradient-ios" style={{ fontWeight: 600 }}>iOS</span>, and <span className="text-gradient" style={{ fontWeight: 600 }}>Kotlin Multiplatform</span> to build apps that perform flawlessly. But great architecture is nothing without a great interface. I have a deep love for UI/UX, obsessing over the details to create experiences that feel truly mobile-native, with that signature Material Design touch.
         </motion.p>
 
         <motion.div

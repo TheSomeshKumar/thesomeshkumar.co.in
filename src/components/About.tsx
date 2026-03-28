@@ -3,7 +3,64 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaAndroid, FaApple, FaJava, FaGithub } from 'react-icons/fa';
+import { SiKotlin, SiSwift, SiFirebase, SiJira } from 'react-icons/si';
+import { Code2, Smartphone, Layers, Database, Wrench } from 'lucide-react';
 import styles from './About.module.css';
+
+const skillCategories = [
+  {
+    title: "Languages",
+    icon: <Code2 size={20} />,
+    skills: [
+      { name: "Kotlin", icon: <SiKotlin color="#7F52FF" /> }, // [cite: 4]
+      { name: "Java", icon: <FaJava color="#5382A1" /> }, // [cite: 4]
+      { name: "Swift", icon: <SiSwift color="#F05138" /> }
+    ]
+  },
+  {
+    title: "Platforms & UI",
+    icon: <Smartphone size={20} />,
+    skills: [
+      { name: "Android", icon: <FaAndroid color="#3DDC84" /> },
+      { name: "iOS", icon: <FaApple color="#A3AAAE" /> },
+      { name: "Kotlin Multiplatform", icon: <SiKotlin color="#C6538C" /> },
+      { name: "Jetpack Compose", icon: <FaAndroid color="#4285F4" /> },
+      { name: "SwiftUI", icon: <SiSwift color="#007AFF" /> },
+      { name: "Material Design", icon: null }
+    ]
+  },
+  {
+    title: "Architecture & Async",
+    icon: <Layers size={20} />,
+    skills: [
+      { name: "MVVM & Clean Architecture", icon: null },
+      { name: "Coroutines & Flow", icon: null },
+      { name: "RxJava", icon: null }
+    ]
+  },
+  {
+    title: "Libraries & Tech",
+    icon: <Database size={20} />,
+    skills: [
+      { name: "Ktor & Retrofit", icon: null },
+      { name: "SQLDelight & Room", icon: null },
+      { name: "Koin & Hilt", icon: null },
+      { name: "WebRTC", icon: null },
+      { name: "Coil", icon: null }
+    ]
+  },
+  {
+    title: "Tools & Ecosystem",
+    icon: <Wrench size={20} />,
+    skills: [
+      { name: "Firebase", icon: <SiFirebase color="#FFCA28" /> },
+      { name: "jUnit / Unit Testing", icon: null },
+      { name: "Git & GitHub", icon: <FaGithub color="#181717" /> },
+      { name: "Jira", icon: <SiJira color="#0052CC" /> }
+    ]
+  }
+];
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,21 +88,37 @@ export default function About() {
             I started my career as an Android developer writing Java. Today, as a Tech Lead, I build apps for both Android and iOS using Kotlin Multiplatform.
           </p>
           <p className={styles.paragraph}>
-            Over the years, I've built products from scratch, rewritten older legacy code into modern MVVM and Jetpack Compose architectures, and mentored junior developers. I have a Master's in Computer Applications from Jaipur National University, and I really enjoy contributing to open-source projects when I can.
+            Over the years, I've built products from scratch, rewritten older legacy code into modern MVVM and Jetpack Compose architectures, and mentored junior developers. I have a Master's in Computer Science, and I really enjoy contributing to open-source projects when I can.
           </p>
 
           <h2 className={styles.heading}>Beyond the Screen</h2>
           <p className={styles.paragraph}>
-            I'm based in Jaipur. I'm naturally a bit of an introvert, so while my day job involves a lot of leading and collaborating, I do my best work when I can just put on my headphones, put on some Eminem or hip-hop, and get completely into the zone.
+            I'm based in Jaipur, Rajasthan. I'm naturally a bit of an introvert, so while my day job involves a lot of leading and collaborating, I do my best work when I can just put on my headphones, put on some Eminem or old school hip-hop, and get completely into the zone.
           </p>
           <p className={styles.paragraph}>
-            When I'm not coding, I'm usually spending time with my kids, messing around with photography and photo editing, or reading up on astrology. I also really like traveling and the idea of hiking—taking my bike up to Rishikesh recently was a great way to unplug. I also love playing video games, though it's hard to find much free time for that these days!
+            When I'm not coding, I'm usually spending time with my kid, messing around with photography, and daydreaming about attending an Eminem concert. I also love playing video games, though it's hard to find much free time for that these days!
           </p>
 
-          <div className={styles.skills}>
-            {["Kotlin", "Java", "Jetpack Compose", "SwiftUI", "Kotlin Multiplatform"].map(skill => (
-              <span key={skill} className="tag">{skill}</span>
-            ))}
+          <div className={styles.skillsSection}>
+            <h3 className={styles.skillsHeading}>Technical Arsenal</h3>
+            <div className={styles.skillsGrid}>
+              {skillCategories.map(category => (
+                <div key={category.title} className={styles.skillCategory}>
+                  <div className={styles.categoryHeader}>
+                    <span className={styles.categoryIcon}>{category.icon}</span>
+                    <h4 className={styles.categoryTitle}>{category.title}</h4>
+                  </div>
+                  <div className={styles.skillsList}>
+                    {category.skills.map(skill => (
+                      <span key={skill.name} className={styles.skillBadge}>
+                        {skill.icon && <span className={styles.skillIcon}>{skill.icon}</span>}
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <motion.div
@@ -56,8 +129,8 @@ export default function About() {
             viewport={{ once: true }}
           >
             <span className={styles.quoteIcon}>&ldquo;</span>
-            <p className={styles.songQuote}>&apos;Cause I&apos;m Slim Shady, yes, I&apos;m the real Shady... All you other Slim Shadys are just imitating</p>
-            <span className={styles.artist}>— Eminem (The Real Slim Shady)</span>
+            <p className={styles.songQuote}>Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</p>
+            <span className={styles.artist}>— Martin Fowler</span>
           </motion.div>
         </motion.div>
 
@@ -65,13 +138,13 @@ export default function About() {
           {/* Photo 1: Work / Desk (Left) */}
           <motion.div style={{ y: y1 }} className={`${styles.imgWrapper} ${styles.imgPos1}`}>
             <Image
-              src="/somesh_2019.png"
+              src="/somesh_2013.png"
               alt="Somesh Desk Setup 2013"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            <div className={styles.imgCaption}>2019: The 3-laptop grind & debug naps</div>
+            <div className={styles.imgCaption}>College Days, 2013: The 3-laptop grind & debug naps</div>
           </motion.div>
 
           {/* Photo 2: Face / Portrait (Top Right) */}
@@ -83,7 +156,7 @@ export default function About() {
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            <div className={styles.imgCaption}>Somesh Kumar</div>
+            <div className={styles.imgCaption}>Happy Somesh</div>
           </motion.div>
 
           {/* Photo 3: Travel / Personal (Bottom Right) */}
@@ -95,7 +168,7 @@ export default function About() {
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            <div className={styles.imgCaption}>Travels & Unplugging</div>
+            <div className={styles.imgCaption}>Solo Bike Trip to Northern India</div>
           </motion.div>
         </div>
       </div>

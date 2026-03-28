@@ -35,11 +35,87 @@
   font-size: 1.05rem;
 }
 
-.skills {
+.skillsSection {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.skillsHeading {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.skillCategory {
+  background: var(--bg-tertiary, rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: border-color 0.3s ease;
+}
+
+.skillCategory:hover {
+  border-color: rgba(255,255,255,0.1);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.categoryIcon {
+  color: var(--color-kmp);
+  display: flex;
+  align-items: center;
+}
+
+.categoryTitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.skillsList {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
-  margin-top: var(--space-lg);
+}
+
+.skillBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.skillBadge:hover {
+  border-color: var(--color-kmp);
+  transform: translateY(-2px);
+  background: rgba(127, 82, 255, 0.05); /* subtle kmp tint */
+}
+
+.skillIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 .imagesGrid {
@@ -104,14 +180,10 @@
   font-family: var(--font-mono);
   text-align: center;
   backdrop-filter: blur(8px);
-  transform: translateY(100%);
+  transform: translateY(0);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
   border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.imgWrapper:hover .imgCaption {
-  transform: translateY(0);
 }
 
 .placeholderImg span {
