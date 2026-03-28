@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Somesh Kumar - Mobile Tech Lead Portfolio
 
-## Getting Started
+A premium, highly interactive personal portfolio website showcasing my work as an Android, iOS, and Kotlin Multiplatform (KMP) Tech Lead. Designed with a focus on fluid animations, modern typography, and a distinct mobile-developer aesthetic.
 
-First, run the development server:
+## 🚀 Tech Stack & Libraries
+
+This project is built using modern web development standards to ensure a highly responsive, performant, and dynamic user experience:
+
+- **Framework**: [Next.js](https://nextjs.org/) (React 19)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: Vanilla CSS Modules (featuring custom-tailored design tokens, rich gradients, and glassmorphism elements)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) (orchestrating scroll-linked effects, parallax image layers, and physics-based hover states)
+- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/) (delivering color-coded tech-stack branding)
+- **Deployment**: Ready for automatic, secure deployment on [Vercel](https://vercel.com/)
+
+## ✨ Key Features
+
+- **Immersive Hero & About Sections**: Includes custom parallax scroll animations (`useScroll`, `useTransform`) and interactive, expanding photo grids (e.g. dynamic morphing rectangles and scale-ups upon hover).
+- **Dynamic Projects Showcase**: Automatically structures applications into "Company Owned" vs "Personal/Open Source", fully integrated with smart, conditional rendering for deep links into the Apple App Store, Google Play Store, specialized websites, and GitHub.
+- **Categorized "Technical Arsenal"**: A meticulously structured, color-coded skills grid mapping across Languages, UI Platforms, Architecture (Clean Architecture, MVVM), Async flows, and broad ecosystem tools.
+- **Responsive & Accessible**: Fully adaptable layout that feels polished on wide desktop monitors down to mobile viewports.
+
+## 🛠️ Getting Started
+
+First, install the necessary dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the live result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Repository Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/components` - Core UI blocks (`Hero.tsx`, `Projects.tsx`, `Experience.tsx`, `About.tsx`)
+- `/public` - Static assets, images, and embedded graphics
+- `/src/app` - Standard Next.js root configuration and layout components
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Developed with a passion for building UI experiences that feel truly mobile-native.*

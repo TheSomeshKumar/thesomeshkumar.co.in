@@ -135,7 +135,7 @@ export default function About() {
         </motion.div>
 
         <div className={styles.imagesGrid}>
-          {/* Photo 1: Work / Desk (Left) */}
+          {/* Photo 1: Blast from the past (Left) */}
           <motion.div style={{ y: y1 }} className={`${styles.imgWrapper} ${styles.imgPos1}`}>
             <Image
               src="/somesh_2013.png"
@@ -147,16 +147,16 @@ export default function About() {
             <div className={styles.imgCaption}>College Days, 2013: The 3-laptop grind & debug naps</div>
           </motion.div>
 
-          {/* Photo 2: Face / Portrait (Top Right) */}
+          {/* Photo 2: Personal Photo (Top Right) */}
           <motion.div style={{ y: y2 }} className={`${styles.imgWrapper} ${styles.imgPos2}`}>
             <Image
-              src="/somesh_photo.jpg"
-              alt="Somesh Portrait"
+              src="/somesh_ncc.jpg"
+              alt="In prestigius NCC RDC Camp, 2009"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            <div className={styles.imgCaption}>Happy Somesh</div>
+            <div className={styles.imgCaption}>NCC Republic Day Camp, 2009</div>
           </motion.div>
 
           {/* Photo 3: Travel / Personal (Bottom Right) */}
