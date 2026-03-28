@@ -139,7 +139,7 @@ export default function About() {
           <motion.div style={{ y: y1 }} className={`${styles.imgWrapper} ${styles.imgPos1}`}>
             <Image
               src="/somesh_2013.png"
-              alt="Somesh Desk Setup 2013"
+              alt="The 3-laptop grind & debug naps"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -168,7 +168,7 @@ export default function About() {
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            <div className={styles.imgCaption}>Solo Bike Trip to Northern India</div>
+            <div className={styles.imgCaption}>Solo Bike Trip to Uttarakhand, 2026</div>
           </motion.div>
         </div>
       </div>
