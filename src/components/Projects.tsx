@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Smartphone, Download, Star } from 'lucide-react';
 import { FaGithub, FaGooglePlay, FaApple } from 'react-icons/fa';
 import styles from './Projects.module.css';
@@ -111,24 +111,61 @@ const projects = [
   }
 ];
 
-export default function Projects() {
-  const companyProjects = projects.filter(p => !p.isPersonal);
-  const personalProjects = projects.filter(p => p.isPersonal);
+function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const ProjectCard = ({ project, idx }: { project: any, idx: number }) => (
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), { stiffness: 200, damping: 20 });
+  const glareX = useTransform(mouseX, [-0.5, 0.5], [0, 100]);
+  const glareY = useTransform(mouseY, [-0.5, 0.5], [0, 100]);
+
+  function handleMouseMove(e: React.MouseEvent) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  }
+
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+    setIsHovered(false);
+  }
+
+  return (
     <motion.div
-      key={idx}
       className={styles.cardWrapper}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: idx * 0.15 }}
+      initial={{ opacity: 0, y: 50, rotateX: 10 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <motion.div
+        ref={cardRef}
         className={styles.card}
-        whileHover={{ y: -10, scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        style={{ rotateX, rotateY }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
       >
+        <motion.div
+          className={styles.cardGlare}
+          style={{
+            background: useTransform(
+              [glareX, glareY],
+              ([x, y]) =>
+                `radial-gradient(circle at ${x}% ${y}%, rgba(127, 82, 255, 0.15) 0%, transparent 60%)`
+            ),
+            opacity: isHovered ? 1 : 0,
+          }}
+        />
+
         <div className={styles.cardHeader}>
           <div className={styles.iconWrapper}>
             <Smartphone size={20} />
@@ -147,13 +184,13 @@ export default function Projects() {
 
         <div className={styles.cardFooter}>
           <div className={styles.metrics}>
-            {project.downloads && (
+            {'downloads' in project && project.downloads && (
               <span className={styles.metricBadge} title="App Downloads">
                 <Download size={14} />
                 {project.downloads}
               </span>
             )}
-            {project.stars && (
+            {'stars' in project && project.stars && (
               <span className={styles.metricBadge} title="GitHub Stars">
                 <Star size={14} className={styles.starIcon} />
                 {project.stars}
@@ -170,24 +207,18 @@ export default function Projects() {
               )
             ) : (
               <>
-                {project.playStore && project.playStore !== "#" && (
+                {'playStore' in project && project.playStore && project.playStore !== "#" && (
                   <a href={project.playStore} className={styles.linkIcon} aria-label="Play Store" target="_blank" rel="noopener noreferrer">
                     <FaGooglePlay size={20} />
                   </a>
                 )}
-                {project.appStore && project.appStore !== "#" && (
+                {'appStore' in project && project.appStore && project.appStore !== "#" && (
                   <a href={project.appStore} className={styles.linkIcon} aria-label="App Store" target="_blank" rel="noopener noreferrer">
                     <FaApple size={20} />
                   </a>
                 )}
-                {project.webLink && project.webLink !== "#" && (
+                {'webLink' in project && project.webLink && project.webLink !== "#" && (
                   <a href={project.webLink} className={styles.linkIcon} aria-label="Website" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={20} />
-                  </a>
-                )}
-                {/* Fallback for projects that use the 'link' property instead */}
-                {project.link && project.link !== "#" && !project.playStore && !project.appStore && !project.webLink && (
-                  <a href={project.link} className={styles.linkIcon} aria-label="External Link" target="_blank" rel="noopener noreferrer">
                     <ExternalLink size={20} />
                   </a>
                 )}
@@ -198,6 +229,11 @@ export default function Projects() {
       </motion.div>
     </motion.div>
   );
+}
+
+export default function Projects() {
+  const companyProjects = projects.filter(p => !p.isPersonal);
+  const personalProjects = projects.filter(p => p.isPersonal);
 
   return (
     <section id="projects" className={styles.projectsSection}>
@@ -212,14 +248,35 @@ export default function Projects() {
           Selected Works
         </motion.h2>
 
-        <h3 className={styles.subHeading}>Company Owned</h3>
+        <motion.h3
+          className={styles.subHeading}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Company Owned
+        </motion.h3>
         <div className={styles.grid}>
-          {companyProjects.map((project, idx) => <ProjectCard key={project.title} project={project} idx={idx} />)}
+          {companyProjects.map((project, idx) => (
+            <PhoneCard key={project.title} project={project} idx={idx} />
+          ))}
         </div>
 
-        <h3 className={styles.subHeading} style={{ marginTop: 'var(--space-2xl)' }}>Personal & Open Source</h3>
+        <motion.h3
+          className={styles.subHeading}
+          style={{ marginTop: 'var(--space-2xl)' }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Personal & Open Source
+        </motion.h3>
         <div className={styles.grid}>
-          {personalProjects.map((project, idx) => <ProjectCard key={project.title} project={project} idx={idx} />)}
+          {personalProjects.map((project, idx) => (
+            <PhoneCard key={project.title} project={project} idx={idx} />
+          ))}
         </div>
       </div>
     </section>

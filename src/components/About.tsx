@@ -102,21 +102,42 @@ export default function About() {
           <div className={styles.skillsSection}>
             <h3 className={styles.skillsHeading}>Technical Arsenal</h3>
             <div className={styles.skillsGrid}>
-              {skillCategories.map(category => (
-                <div key={category.title} className={styles.skillCategory}>
+              {skillCategories.map((category, catIdx) => (
+                <motion.div
+                  key={category.title}
+                  className={styles.skillCategory}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: catIdx * 0.1 }}
+                >
                   <div className={styles.categoryHeader}>
                     <span className={styles.categoryIcon}>{category.icon}</span>
                     <h4 className={styles.categoryTitle}>{category.title}</h4>
                   </div>
                   <div className={styles.skillsList}>
-                    {category.skills.map(skill => (
-                      <span key={skill.name} className={styles.skillBadge}>
+                    {category.skills.map((skill, skillIdx) => (
+                      <motion.span
+                        key={skill.name}
+                        className={styles.skillBadge}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.3,
+                          delay: catIdx * 0.1 + skillIdx * 0.05,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20
+                        }}
+                        whileHover={{ scale: 1.08, y: -3 }}
+                      >
                         {skill.icon && <span className={styles.skillIcon}>{skill.icon}</span>}
                         {skill.name}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

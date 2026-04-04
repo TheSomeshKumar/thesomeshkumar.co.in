@@ -1,13 +1,30 @@
-.header {
+.progressBar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  height: 3px;
+  background: var(--color-kmp-gradient);
+  transform-origin: 0%;
+  z-index: 200;
+}
+
+.header {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
   height: var(--nav-height);
   z-index: 100;
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.headerScrolled {
+  background: rgba(10, 10, 10, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -33,14 +50,96 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-kmp-gradient);
+  border-radius: 1px;
+  transition: width 0.3s ease;
 }
 
 .navLink:hover {
   color: var(--text-primary);
 }
 
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLinkActive {
+  color: var(--text-primary);
+}
+
+.navLinkActive::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease;
+}
+
+.hamburger:hover {
+  border-color: var(--text-muted);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 150;
+}
+
+.mobileNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(320px, 80vw);
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+}
+
+.mobileNavLink {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--text-primary);
+}
+
 @media (max-width: 768px) {
   .nav {
-    display: none; /* simple hide on mobile for now, can add hamburger later */
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
