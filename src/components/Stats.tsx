@@ -12,6 +12,13 @@ const stats = [
   { label: 'Projects Shipped', value: 12, suffix: '+', icon: <FolderOpen size={22} /> },
 ];
 
+const hoverPatterns = [
+  { y: -6, rotateX: 1, rotateY: -1.8 },
+  { y: -5, rotateX: 0.7, rotateY: 1.6 },
+  { y: -7, rotateX: 1.2, rotateY: -1.4 },
+  { y: -4, rotateX: 0.5, rotateY: 1.2 }
+];
+
 function AnimatedCounter({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
   const [count, setCount] = useState(0);
 
@@ -56,7 +63,7 @@ export default function Stats() {
               stiffness: 150,
               damping: 15
             }}
-            whileHover={{ y: -4, scale: 1.03 }}
+            whileHover={hoverPatterns[idx % hoverPatterns.length]}
           >
             <span className={styles.iconCircle}>{stat.icon}</span>
             <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={inView} />

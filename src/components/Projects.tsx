@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useCallback } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Smartphone, Download, Star } from 'lucide-react';
 import { FaGithub, FaGooglePlay, FaApple } from 'react-icons/fa';
@@ -111,19 +111,14 @@ const projects = [
   }
 ];
 
+const hoverPatterns = [
+  { y: -6, rotateX: 1.1, rotateY: -2.1, transition: { type: 'spring', stiffness: 320, damping: 24 } },
+  { y: -5, rotateX: 0.7, rotateY: 1.8, transition: { type: 'spring', stiffness: 320, damping: 24 } },
+  { y: -7, rotateX: 1.3, rotateY: -1.5, transition: { type: 'spring', stiffness: 320, damping: 24 } },
+  { y: -4, rotateX: 0.5, rotateY: 1.3, transition: { type: 'spring', stiffness: 320, damping: 24 } }
+];
+
 function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setGlarePos({ x, y });
-  }, []);
-
   return (
     <motion.div
       className={styles.cardWrapper}
@@ -133,29 +128,10 @@ function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: nu
       transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <motion.div
-        ref={cardRef}
         className={styles.card}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        whileHover={{ y: -8 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+        whileHover={hoverPatterns[idx % hoverPatterns.length]}
+        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
       >
-        <div
-          className={styles.cardSpotlight}
-          style={{
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(127, 82, 255, 0.18) 0%, transparent 55%)`,
-            opacity: isHovered ? 1 : 0,
-          }}
-        />
-        <div
-          className={styles.cardBorderGlow}
-          style={{
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(127, 82, 255, 0.6) 0%, transparent 50%)`,
-            opacity: isHovered ? 1 : 0,
-          }}
-        />
-
         <div className={styles.cardHeader}>
           <div className={styles.iconWrapper}>
             <Smartphone size={20} />

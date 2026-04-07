@@ -75,7 +75,7 @@ export default function Hero() {
   const phoneRotateY = useTransform(scrollY, [0, 600], [-12, 5]);
 
   return (
-    <section className={styles.heroSection}>
+    <section id="home" className={styles.heroSection}>
       <motion.div
         className={`${styles.heroGrid} container`}
         style={{ opacity }}

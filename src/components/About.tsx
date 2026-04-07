@@ -62,6 +62,14 @@ const skillCategories = [
   }
 ];
 
+const hoverPatterns = [
+  { y: -5, rotateX: 0.8, rotateY: -1.8 },
+  { y: -4, rotateX: 0.6, rotateY: 1.6 },
+  { y: -6, rotateX: 1, rotateY: -1.4 },
+  { y: -3, rotateX: 0.5, rotateY: 1.2 },
+  { y: -5, rotateX: 0.9, rotateY: -1.1 }
+];
+
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -108,6 +116,7 @@ export default function About() {
                   className={styles.skillCategory}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={hoverPatterns[catIdx % hoverPatterns.length]}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.4, delay: catIdx * 0.1 }}
                 >

@@ -1,10 +1,11 @@
 .experienceSection {
   padding: var(--space-2xl) 0;
   background: var(--bg-secondary);
+  position: relative;
 }
 
 .header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-2xl);
   text-align: center;
 }
 
@@ -14,98 +15,109 @@
   letter-spacing: -0.02em;
 }
 
-.timeline {
-  max-width: 800px;
+.subheading {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: var(--space-sm) auto 0;
+  max-width: 760px;
+}
+
+.journeyRail {
+  max-width: 980px;
   margin: 0 auto;
-  position: relative;
-  padding: 0 var(--space-md);
+  display: grid;
+  gap: var(--space-xl);
 }
 
-.timelineTrack {
-  position: absolute;
-  left: 19px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    var(--color-kmp) 0%,
-    var(--color-android) 50%,
-    var(--color-ios) 100%
-  );
-  opacity: 0.2;
-  border-radius: 2px;
-}
-
-.timelineItem {
-  display: flex;
+.yearBlock {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: start;
   gap: var(--space-lg);
   position: relative;
-  margin-bottom: var(--space-xl);
 }
 
-.timelineItem:last-child {
-  margin-bottom: 0;
-}
-
-.markerWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.marker {
-  width: 40px;
-  height: 40px;
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-kmp);
+.yearColumn {
   position: relative;
-  z-index: 2;
-  transition: all 0.4s ease;
+  min-height: 100%;
+  padding-top: 4px;
 }
 
-.timelineItem:hover .marker {
-  border-color: var(--color-kmp);
-  background: rgba(127, 82, 255, 0.1);
-  box-shadow: 0 0 20px rgba(127, 82, 255, 0.4);
-  transform: scale(1.1);
+.year {
+  display: inline-block;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  color: #ffffff;
+  opacity: 0.2;
+  text-shadow: 0 0 26px rgba(127, 82, 255, 0.24);
 }
 
-/* ---- Notification-style card ---- */
-.notificationCard {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.03);
+.yearDot {
+  position: absolute;
+  right: -14px;
+  top: 22px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, var(--color-kmp), #ff8965);
+  box-shadow: 0 0 0 4px rgba(127, 82, 255, 0.15);
+}
+
+.yearBlock::after {
+  content: '';
+  position: absolute;
+  left: 214px;
+  top: 34px;
+  bottom: -40px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(127, 82, 255, 0.4), rgba(0, 122, 255, 0.08));
+}
+
+.yearBlock:last-child::after {
+  display: none;
+}
+
+.storyCard {
+  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(14, 14, 22, 0.95) 100%);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: var(--space-lg);
   backdrop-filter: blur(8px);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   cursor: default;
+  position: relative;
+  overflow: hidden;
 }
 
-.notificationCard:hover {
-  border-color: rgba(127, 82, 255, 0.3);
-  box-shadow: 0 8px 30px rgba(127, 82, 255, 0.1);
+.storyCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 90% 0%, rgba(127, 82, 255, 0.16), transparent 45%);
 }
 
-.notifHeader {
+.storyCard:hover {
+  border-color: rgba(127, 82, 255, 0.35);
+  box-shadow: 0 16px 48px rgba(127, 82, 255, 0.14);
+}
+
+.storyHead {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  gap: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
 }
 
-.notifAppIcon {
-  width: 24px;
-  height: 24px;
+.companyBadge {
+  width: 28px;
+  height: 28px;
   background: var(--color-kmp-gradient);
-  border-radius: 7px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,63 +125,116 @@
   flex-shrink: 0;
 }
 
-.notifCompany {
-  font-size: 0.8rem;
-  font-weight: 600;
+.company {
+  font-size: 0.84rem;
+  font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
-.notifTime {
-  font-size: 0.75rem;
+.period {
+  font-size: 0.72rem;
   color: var(--text-muted);
   margin-left: auto;
   font-family: var(--font-mono);
 }
 
 .role {
-  font-size: 1.35rem;
-  margin: 0 0 var(--space-sm) 0;
-  font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  margin: 0;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
-.description {
+.summary {
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-.notifTags {
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0;
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.highlights li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-kmp);
+}
+
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-top: var(--space-md);
 }
 
-.notifTag {
-  font-size: 0.7rem;
-  font-weight: 500;
-  padding: 3px 10px;
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 11px;
   border-radius: var(--radius-full);
+  border: 1px solid rgba(127, 82, 255, 0.18);
   background: rgba(127, 82, 255, 0.1);
-  color: var(--color-kmp);
-  border: 1px solid rgba(127, 82, 255, 0.15);
-  letter-spacing: 0.02em;
+  color: #d4c6ff;
+  letter-spacing: 0.03em;
 }
 
-@media (max-width: 600px) {
-  .timelineTrack {
-    display: none;
-  }
-
-  .timelineItem {
-    flex-direction: column;
+@media (max-width: 860px) {
+  .yearBlock {
+    grid-template-columns: 1fr;
     gap: var(--space-md);
   }
 
-  .markerWrapper {
-    flex-direction: row;
-    gap: var(--space-sm);
+  .yearColumn {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .year {
+    font-size: clamp(2.6rem, 14vw, 5rem);
+  }
+
+  .yearDot {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  .yearBlock::after {
+    left: 6px;
+    top: 66px;
+    bottom: -26px;
+  }
+}
+
+@media (max-width: 540px) {
+  .storyHead {
+    flex-wrap: wrap;
+  }
+
+  .period {
+    margin-left: 0;
+    width: 100%;
+    font-size: 0.7rem;
   }
 }

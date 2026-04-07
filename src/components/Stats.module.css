@@ -18,16 +18,17 @@
   align-items: center;
   text-align: center;
   padding: var(--space-lg) var(--space-md);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(14, 14, 22, 0.95) 100%);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(4px);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .statCard:hover {
-  border-color: rgba(127, 82, 255, 0.3);
-  box-shadow: 0 8px 24px rgba(127, 82, 255, 0.1);
+  border-color: rgba(127, 82, 255, 0.35);
+  box-shadow: 0 16px 48px rgba(127, 82, 255, 0.14);
+  transform: translateY(-4px);
 }
 
 .iconCircle {
