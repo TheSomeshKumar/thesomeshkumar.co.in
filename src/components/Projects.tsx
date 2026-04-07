@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { ExternalLink, Smartphone, Download, Star } from 'lucide-react';
 import { FaGithub, FaGooglePlay, FaApple } from 'react-icons/fa';
 import styles from './Projects.module.css';
@@ -113,55 +113,45 @@ const projects = [
 
 function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), { stiffness: 200, damping: 20 });
-  const glareX = useTransform(mouseX, [-0.5, 0.5], [0, 100]);
-  const glareY = useTransform(mouseY, [-0.5, 0.5], [0, 100]);
-
-  function handleMouseMove(e: React.MouseEvent) {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  }
-
-  function handleMouseLeave() {
-    mouseX.set(0);
-    mouseY.set(0);
-    setIsHovered(false);
-  }
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setGlarePos({ x, y });
+  }, []);
 
   return (
     <motion.div
       className={styles.cardWrapper}
-      initial={{ opacity: 0, y: 50, rotateX: 10 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <motion.div
         ref={cardRef}
         className={styles.card}
-        style={{ rotateX, rotateY }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{ y: -8 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       >
-        <motion.div
-          className={styles.cardGlare}
+        <div
+          className={styles.cardSpotlight}
           style={{
-            background: useTransform(
-              [glareX, glareY],
-              ([x, y]) =>
-                `radial-gradient(circle at ${x}% ${y}%, rgba(127, 82, 255, 0.15) 0%, transparent 60%)`
-            ),
+            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(127, 82, 255, 0.18) 0%, transparent 55%)`,
+            opacity: isHovered ? 1 : 0,
+          }}
+        />
+        <div
+          className={styles.cardBorderGlow}
+          style={{
+            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(127, 82, 255, 0.6) 0%, transparent 50%)`,
             opacity: isHovered ? 1 : 0,
           }}
         />
