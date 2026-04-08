@@ -112,10 +112,10 @@ const projects = [
 ];
 
 const hoverPatterns = [
-  { y: -6, rotateX: 1.1, rotateY: -2.1, transition: { type: 'spring', stiffness: 320, damping: 24 } },
-  { y: -5, rotateX: 0.7, rotateY: 1.8, transition: { type: 'spring', stiffness: 320, damping: 24 } },
-  { y: -7, rotateX: 1.3, rotateY: -1.5, transition: { type: 'spring', stiffness: 320, damping: 24 } },
-  { y: -4, rotateX: 0.5, rotateY: 1.3, transition: { type: 'spring', stiffness: 320, damping: 24 } }
+  { y: -6, rotateX: 1.1, rotateY: -2.1 },
+  { y: -5, rotateX: 0.7, rotateY: 1.8 },
+  { y: -7, rotateX: 1.3, rotateY: -1.5 },
+  { y: -4, rotateX: 0.5, rotateY: 1.3 }
 ];
 
 function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: number }) {
