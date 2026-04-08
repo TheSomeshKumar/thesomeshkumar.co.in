@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
+import { FaGithub, FaMedium, FaLinkedinIn } from 'react-icons/fa';
+import ThemeToggle from './ThemeToggle';
 import styles from './Header.module.css';
 
 const navLinks = [
@@ -10,6 +12,13 @@ const navLinks = [
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
+];
+
+const socialLinks = [
+  { Icon: FaGithub, href: "https://github.com/TheSomeshKumar", label: "GitHub" },
+  { Icon: FaLinkedinIn, href: "https://linkedin.com/in/thesomeshkumar", label: "LinkedIn" },
+  { Icon: FaMedium, href: "https://medium.com/@thesomeshkumar", label: "Medium" },
+  { Icon: Phone, href: "tel:+917737767735", label: "Phone" }
 ];
 
 export default function Header() {
@@ -67,30 +76,54 @@ export default function Header() {
             Somesh Kumar<span className="text-gradient">.</span>
           </a>
 
-          <nav className={styles.nav}>
-            {navLinks.map((link, idx) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className={`${styles.navLink} ${activeSection === link.href.replace('#', '') ? styles.navLinkActive : ''}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + idx * 0.1, duration: 0.5 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
-          </nav>
+          <div className={styles.desktopActions}>
+            <nav className={styles.nav}>
+              {navLinks.map((link, idx) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  className={`${styles.navLink} ${activeSection === link.href.replace('#', '') ? styles.navLinkActive : ''}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + idx * 0.1, duration: 0.5 }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </nav>
 
-          <button
-            className={styles.hamburger}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <div className={styles.socialsDesktop}>
+              {socialLinks.map((social, idx) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  className={styles.socialIcon}
+                  aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  initial={{ opacity: 0, y: -14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45 + idx * 0.06, duration: 0.35 }}
+                  whileHover={{ y: -3, scale: 1.08 }}
+                >
+                  <social.Icon size={14} />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.rightControls}>
+            <ThemeToggle />
+            <button
+              className={styles.hamburger}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -123,6 +156,22 @@ export default function Header() {
                   {link.name}
                 </motion.a>
               ))}
+
+              <div className={styles.mobileSocials}>
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className={styles.mobileSocialIcon}
+                    aria-label={social.label}
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <social.Icon size={18} />
+                  </a>
+                ))}
+              </div>
             </motion.nav>
           </motion.div>
         )}

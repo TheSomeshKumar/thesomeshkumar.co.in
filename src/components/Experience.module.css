@@ -5,7 +5,7 @@
 }
 
 .header {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
   text-align: center;
 }
 
@@ -23,6 +23,7 @@
 }
 
 .journeyRail {
+  --year-col-width: 180px;
   max-width: 980px;
   margin: 0 auto;
   display: grid;
@@ -31,9 +32,9 @@
 
 .yearBlock {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: var(--year-col-width) 1fr;
   align-items: start;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   position: relative;
 }
 
@@ -49,7 +50,7 @@
   line-height: 0.92;
   letter-spacing: -0.05em;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--year-display-color);
   opacity: 0.2;
   text-shadow: 0 0 26px rgba(127, 82, 255, 0.24);
 }
@@ -68,7 +69,7 @@
 .yearBlock::after {
   content: '';
   position: absolute;
-  left: 214px;
+  left: calc(var(--year-col-width) - 6px);
   top: 34px;
   bottom: -40px;
   width: 1px;
@@ -80,7 +81,7 @@
 }
 
 .storyCard {
-  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(14, 14, 22, 0.95) 100%);
+  background: var(--card-surface);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: var(--space-lg);

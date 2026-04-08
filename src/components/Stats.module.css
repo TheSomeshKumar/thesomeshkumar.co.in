@@ -19,7 +19,7 @@
   text-align: center;
   padding: var(--space-lg) var(--space-md);
   border-radius: 24px;
-  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(14, 14, 22, 0.95) 100%);
+  background: var(--card-surface);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(4px);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;

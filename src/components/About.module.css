@@ -54,7 +54,7 @@
 }
 
 .skillCategory {
-  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(14, 14, 22, 0.95) 100%);
+  background: var(--card-surface);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: var(--space-md);
@@ -179,7 +179,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--photo-caption-bg);
   color: var(--text-primary);
   padding: 8px 12px;
   font-size: 0.8rem;
@@ -189,7 +189,7 @@
   transform: translateY(0);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid var(--photo-caption-border);
 }
 
 .placeholderImg span {

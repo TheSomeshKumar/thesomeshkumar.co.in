@@ -182,16 +182,12 @@
 .phoneMockup {
   width: 280px;
   height: 560px;
-  background: linear-gradient(145deg, #1a1a2e 0%, #0f0f1a 100%);
+  background: var(--phone-shell-bg);
   border-radius: 44px;
-  border: 3px solid #2a2a3e;
+  border: 3px solid var(--phone-shell-border);
   position: relative;
   overflow: hidden;
-  box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 0 60px rgba(127, 82, 255, 0.15);
+  box-shadow: var(--phone-shell-shadow);
   transform-style: preserve-3d;
 }
 
@@ -202,10 +198,10 @@
   transform: translateX(-50%);
   width: 120px;
   height: 28px;
-  background: #0a0a0f;
+  background: var(--phone-notch-bg);
   border-radius: 0 0 20px 20px;
   z-index: 20;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--phone-editor-border);
 }
 
 .phoneNotch::after {
@@ -216,7 +212,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 8px;
-  background: #1a1a2e;
+  background: var(--phone-notch-detail);
   border-radius: 10px;
 }
 
@@ -250,18 +246,18 @@
 }
 
 .codeEditor {
-  background: #0d0d14;
+  background: var(--phone-editor-bg);
   border-radius: 16px;
   height: 100%;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--phone-editor-border);
 }
 
 .editorTabs {
   display: flex;
   gap: 0;
   padding: 6px 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--phone-editor-tab-border);
 }
 
 .editorTab, .editorTabActive {
@@ -310,7 +306,7 @@
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--phone-home-bar);
   border-radius: 4px;
 }
 
@@ -321,7 +317,7 @@
   padding: 10px;
   border-radius: var(--radius-md);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--phone-float-border);
 }
 
 .floatingAndroid {
@@ -334,7 +330,7 @@
 .floatingApple {
   bottom: 60px;
   left: -35px;
-  color: #a3aaae;
+  color: var(--phone-float-apple);
   background: rgba(163, 170, 174, 0.1);
 }
 
