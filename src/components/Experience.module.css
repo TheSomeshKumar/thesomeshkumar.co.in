@@ -23,7 +23,8 @@
 }
 
 .journeyRail {
-  --year-col-width: 180px;
+  --year-col-width: 210px;
+  --year-marker-top: clamp(58px, 6.6vw, 98px);
   max-width: 980px;
   margin: 0 auto;
   display: grid;
@@ -42,23 +43,27 @@
   position: relative;
   min-height: 100%;
   padding-top: 4px;
+  z-index: 2;
 }
 
 .year {
   display: inline-block;
-  font-size: clamp(3rem, 7vw, 7rem);
+  font-size: clamp(3rem, 6vw, 6.2rem);
   line-height: 0.92;
   letter-spacing: -0.05em;
   font-weight: 800;
   color: var(--year-display-color);
   opacity: 0.2;
   text-shadow: 0 0 26px rgba(127, 82, 255, 0.24);
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
 }
 
 .yearDot {
   position: absolute;
   right: -14px;
-  top: 22px;
+  top: var(--year-marker-top);
   width: 12px;
   height: 12px;
   border-radius: 999px;
@@ -70,7 +75,7 @@
   content: '';
   position: absolute;
   left: calc(var(--year-col-width) - 6px);
-  top: 34px;
+  top: calc(var(--year-marker-top) + 12px);
   bottom: -40px;
   width: 1px;
   background: linear-gradient(180deg, rgba(127, 82, 255, 0.4), rgba(0, 122, 255, 0.08));
@@ -90,6 +95,7 @@
   cursor: default;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .storyCard::before {

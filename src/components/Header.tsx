@@ -10,6 +10,7 @@ import styles from './Header.module.css';
 const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Awards', href: '#awards' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];

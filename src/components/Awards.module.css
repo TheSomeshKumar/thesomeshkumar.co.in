@@ -1,0 +1,100 @@
+.awardsSection {
+  padding: var(--space-2xl) 0;
+  background: var(--bg-primary);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subheading {
+  margin: var(--space-sm) auto 0;
+  max-width: 760px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.card {
+  background: var(--card-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: var(--space-lg);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(127, 82, 255, 0.35);
+  box-shadow: 0 16px 48px rgba(127, 82, 255, 0.14);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.iconBadge {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--color-kmp-gradient);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yearTag {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 4px 9px;
+  background: rgba(127, 82, 255, 0.08);
+}
+
+.title {
+  margin: 14px 0 6px;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.description {
+  margin: 10px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.mediaWrap {
+  margin-top: var(--space-md);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
