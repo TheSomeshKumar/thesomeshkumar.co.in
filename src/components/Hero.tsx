@@ -82,7 +82,7 @@ export default function Hero() {
       >
         <motion.div className={styles.content} style={{ y }}>
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.badge}
@@ -97,30 +97,30 @@ export default function Hero() {
 
           <motion.h1
             className={styles.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Hi, I&apos;m <span className="text-gradient">Somesh Kumar</span><br />
-            Architecting the future of mobile.
+            Building mobile apps used by millions.
           </motion.h1>
 
           <motion.p
             className={styles.subtitle}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Mobile Tech Lead from India with deep expertise in native{' '}
+            Mobile Tech Lead from India specializing in scalable{' '}
             <span className="text-gradient-android" style={{ fontWeight: 600 }}>Android</span>,{' '}
             <span className="text-gradient-ios" style={{ fontWeight: 600 }}>iOS</span>, and{' '}
             <span className="text-gradient" style={{ fontWeight: 600 }}>Kotlin Multiplatform</span>.
-            {' '}Obsessed with pixel-perfect UI and flawless architecture.
+            {' '}I turn complex product ideas into reliable, polished apps with clean architecture.
           </motion.p>
 
           <motion.div
             className={styles.ctaGroup}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
@@ -136,7 +136,7 @@ export default function Hero() {
         <motion.div
           className={styles.phoneContainer}
           style={{ y: phoneY }}
-          initial={{ opacity: 0, x: 60, rotateY: -20 }}
+          initial={false}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
           transition={{ duration: 1.2, delay: 0.5, ease: 'easeOut' }}
         >
@@ -208,7 +208,7 @@ export default function Hero() {
 
       <motion.div
         className={styles.scrollIndicator}
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
       >

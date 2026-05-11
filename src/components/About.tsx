@@ -96,15 +96,15 @@ export default function About() {
             I started my career as an Android developer writing Java. Today, as a Tech Lead, I build apps for both Android and iOS using Kotlin Multiplatform.
           </p>
           <p className={styles.paragraph}>
-            Over the years, I've built products from scratch, rewritten older legacy code into modern MVVM and Jetpack Compose architectures, and mentored junior developers. I have a Master's in Computer Science, and I really enjoy contributing to open-source projects when I can.
+            Over the years, I&apos;ve built products from scratch, rewritten older legacy code into modern MVVM and Jetpack Compose architectures, and mentored junior developers. I have a Master&apos;s in Computer Science, and I really enjoy contributing to open-source projects when I can.
           </p>
 
           <h2 className={styles.heading}>Beyond the Screen</h2>
           <p className={styles.paragraph}>
-            I'm based in Jaipur, Rajasthan. I'm naturally a bit of an introvert, so while my day job involves a lot of leading and collaborating, I do my best work when I can just put on my headphones, put on some Eminem or old school hip-hop, and get completely into the zone.
+            I&apos;m based in Jaipur, Rajasthan. I&apos;m naturally a bit of an introvert, so while my day job involves a lot of leading and collaborating, I do my best work when I can just put on my headphones, put on some Eminem or old school hip-hop, and get completely into the zone.
           </p>
           <p className={styles.paragraph}>
-            When I'm not coding, I'm usually spending time with my kid, messing around with photography, and daydreaming about attending an Eminem concert. I also love playing video games, though it's hard to find much free time for that these days!
+            When I&apos;m not coding, I&apos;m usually spending time with my kid, messing around with photography, and daydreaming about attending an Eminem concert. I also love playing video games, though it&apos;s hard to find much free time for that these days!
           </p>
 
           <div className={styles.skillsSection}>
@@ -181,7 +181,7 @@ export default function About() {
           <motion.div style={{ y: y2 }} className={`${styles.imgWrapper} ${styles.imgPos2}`}>
             <Image
               src="/somesh_ncc.jpg"
-              alt="In prestigius NCC RDC Camp, 2009"
+              alt="In prestigious NCC RDC Camp, 2009"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, 33vw"

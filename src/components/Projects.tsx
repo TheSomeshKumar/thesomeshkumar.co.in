@@ -9,7 +9,7 @@ import styles from './Projects.module.css';
 const projects = [
   {
     title: "SixFlags",
-    description: "Early adopter of Kotlin Multiplatform technology bridging iOS and Android ecosystems.",
+    description: "Led Kotlin Multiplatform adoption to share core business logic across Android and iOS for a high-traffic consumer app.",
     tech: ["KMP", "Jetpack Compose", "SwiftUI", "Koin", "Ktor", "SQLDelight"],
     type: "KMP / 2024-2026",
     appStore: "https://apps.apple.com/us/app/six-flags/id988953433",
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     title: "Circles.Life",
-    description: "Developed server-driven UI, mitigating frequent app releases. Migrated from RxJava to Coroutines, increasing test coverage by 70%.",
+    description: "Built server-driven UI to reduce release pressure, migrated RxJava flows to Coroutines, and increased test coverage by 70%.",
     tech: ["Android", "Kotlin Coroutines", "MVVM", "Koin", "jUnit"],
     type: "Android / 2022-2024",
     appStore: "#",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     title: "Splitwise",
-    description: "Started the orginal project of Splitwise in Java which later become a multi-million dollar company",
+    description: "Started the original Android project in Java for Splitwise, which later became a multi-million dollar company.",
     tech: ["Android", "Java", "MVC", "Material design"],
     type: "Android / 2015-2016",
     appStore: "#",
@@ -69,7 +69,7 @@ const projects = [
   },
   {
     title: "The Wellness Corner",
-    description: "led internal chat system using Socket and implemented fully functional Video Calling leveraging WebRTC.",
+    description: "Led the internal chat system using sockets and implemented full video calling with WebRTC.",
     tech: ["Android", "WebRTC", "Sockets"],
     type: "Android / 2016-2018",
     appStore: "#",
@@ -91,7 +91,7 @@ const projects = [
   },
   {
     title: "PokePedia",
-    description: "Open-source app powered by PokeApi, built with Kotlin Multiplatform and Compose Multiplatform",
+    description: "Open-source app powered by PokeAPI, built with Kotlin Multiplatform and Compose Multiplatform.",
     tech: ["KMP", "Compose Multiplatform", "MVI", "Koin", "Ktor", "SQLDelight"],
     type: "Open Source / 2025-2026",
     link: "#",
@@ -137,6 +137,12 @@ function PhoneCard({ project, idx }: { project: typeof projects[number]; idx: nu
             <Smartphone size={20} />
           </div>
           <span className={styles.projectType}>{project.type}</span>
+        </div>
+
+        <div className={styles.appSignal} aria-hidden="true">
+          <span />
+          <span />
+          <span />
         </div>
 
         <h3 className={styles.cardTitle}>{project.title}</h3>

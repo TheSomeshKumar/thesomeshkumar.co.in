@@ -78,6 +78,13 @@ export default function Experience() {
         </motion.div>
 
         <div className={styles.journeyRail}>
+          <motion.span
+            className={styles.railProgress}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: '-140px' }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          />
           {journey.map((item, idx) => (
             <motion.article
               key={`${item.year}-${item.company}`}
@@ -102,7 +109,7 @@ export default function Experience() {
 
               <motion.div
                 className={styles.storyCard}
-                whileHover={{ y: -4, scale: 1.01 }}
+                whileHover={{ y: -4, scale: 1.01, rotateX: 0.6, rotateY: idx % 2 === 0 ? -0.8 : 0.8 }}
                 transition={{ type: 'spring', stiffness: 320, damping: 25 }}
               >
                 <div className={styles.storyHead}>

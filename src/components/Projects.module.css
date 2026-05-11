@@ -43,6 +43,19 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transform-style: preserve-3d;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 28px -40% auto;
+  height: 140px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: translateX(-65%) rotate(-10deg);
+  opacity: 0;
+  transition: transform 0.65s ease, opacity 0.3s ease;
+  pointer-events: none;
 }
 
 /* The dynamic island / notch */
@@ -64,6 +77,11 @@
 .card:hover {
   border-color: rgba(127, 82, 255, 0.35);
   box-shadow: 0 16px 48px rgba(127, 82, 255, 0.14);
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: translateX(65%) rotate(-10deg);
 }
 
 .cardHeader {
@@ -92,6 +110,50 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
+}
+
+.appSignal {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 18px;
+  margin-bottom: var(--space-sm);
+  color: var(--color-kmp);
+  opacity: 0.72;
+}
+
+.appSignal span {
+  display: block;
+  width: 5px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: bottom;
+  animation: signalPulse 1.8s ease-in-out infinite;
+}
+
+.appSignal span:nth-child(1) {
+  height: 7px;
+}
+
+.appSignal span:nth-child(2) {
+  height: 12px;
+  animation-delay: 0.14s;
+}
+
+.appSignal span:nth-child(3) {
+  height: 17px;
+  animation-delay: 0.28s;
+}
+
+@keyframes signalPulse {
+  0%, 100% {
+    transform: scaleY(0.58);
+    opacity: 0.48;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 .cardTitle {

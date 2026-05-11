@@ -29,6 +29,20 @@
   margin: 0 auto;
   display: grid;
   gap: var(--space-xl);
+  position: relative;
+}
+
+.railProgress {
+  position: absolute;
+  left: calc(var(--year-col-width) - 6px);
+  top: var(--year-marker-top);
+  bottom: 24px;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-kmp), var(--color-ios), var(--color-android));
+  box-shadow: 0 0 24px rgba(127, 82, 255, 0.28);
+  transform-origin: top;
+  z-index: 1;
 }
 
 .yearBlock {
@@ -79,6 +93,7 @@
   bottom: -40px;
   width: 1px;
   background: linear-gradient(180deg, rgba(127, 82, 255, 0.4), rgba(0, 122, 255, 0.08));
+  z-index: 0;
 }
 
 .yearBlock:last-child::after {
@@ -96,6 +111,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transform-style: preserve-3d;
 }
 
 .storyCard::before {
@@ -207,6 +223,12 @@
 }
 
 @media (max-width: 860px) {
+  .railProgress {
+    left: 6px;
+    top: 66px;
+    bottom: 24px;
+  }
+
   .yearBlock {
     grid-template-columns: 1fr;
     gap: var(--space-md);
@@ -231,6 +253,12 @@
     left: 6px;
     top: 66px;
     bottom: -26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .railProgress {
+    transform: none !important;
   }
 }
 
