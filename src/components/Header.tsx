@@ -68,7 +68,7 @@ export default function Header() {
 
       <motion.header
         className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}
-        initial={{ y: -100, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
@@ -86,7 +86,7 @@ export default function Header() {
                   className={`${styles.navLink} ${activeSection === link.href.replace('#', '') ? styles.navLinkActive : ''}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + idx * 0.1, duration: 0.5 }}
                 >
@@ -104,7 +104,7 @@ export default function Header() {
                   aria-label={social.label}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, y: -14 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.45 + idx * 0.06, duration: 0.35 }}
                   whileHover={{ y: -3, scale: 1.08 }}
